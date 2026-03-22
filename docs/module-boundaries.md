@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Module Boundaries
-description: Decision authority for where capabilities live in the Olympus god-module architecture — tiebreaker rules, domain ownership, and package mapping.
+description: Decision authority for where capabilities live in the Olympus module architecture — tiebreaker rules, domain ownership, and package mapping.
 ---
 
 <section class="hero" style="padding: 3rem 0 2rem;">

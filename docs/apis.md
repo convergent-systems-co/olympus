@@ -45,7 +45,7 @@ description: The Olympus standard for writing issues that cannot be falsely clos
         <tr><th>Section</th><th>Purpose</th><th>Required</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>Summary</strong></td><td>What and why, with god-module icon</td><td>✅</td></tr>
+        <tr><td><strong>Summary</strong></td><td>What and why, with module icon</td><td>✅</td></tr>
         <tr><td><strong>What exists today</strong></td><td>Current state — file paths, function names, line counts</td><td>✅</td></tr>
         <tr><td><strong>What needs to happen</strong></td><td>Numbered concrete steps, independently verifiable</td><td>✅</td></tr>
         <tr><td><strong>Verification</strong></td><td>Runnable shell commands with expected output</td><td>✅</td></tr>
@@ -61,7 +61,7 @@ description: The Olympus standard for writing issues that cannot be falsely clos
     <div class="section-label">Summary</div>
     <h2>1. Summary</h2>
     <p>
-      What needs to happen and why. Include the god-module icon if a specific module
+      What needs to happen and why. Include the module icon if a specific module
       is affected:
     </p>
     <pre><code>⚡(Zeus): Master orchestrator issue

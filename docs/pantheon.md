@@ -1,11 +1,11 @@
 ---
 layout: default
-title: The Pantheon — All God-Modules
-description: Complete reference for every god-module in Olympus — active, planned, and future. Each module has one job, communicates through Hermes, and persists through Mnemosyne.
+title: The Pantheon — All Modules
+description: Complete reference for every module in Olympus — active, planned, and future. Each module has one job, communicates through Hermes, and persists through Mnemosyne.
 ---
 
 <section class="hero" style="padding: 3rem 0 2rem;">
-  <div class="hero-badge">Reference · God-Modules</div>
+  <div class="hero-badge">Reference · Modules</div>
   <h1>The Pantheon</h1>
   <p class="hero-sub">
     Every component in Olympus is named after a Greek mythological figure. Each has a single
@@ -19,7 +19,7 @@ description: Complete reference for every god-module in Olympus — active, plan
 <section>
   <div class="section-inner">
     <div class="section-label">Active</div>
-    <h2>Core god-modules</h2>
+    <h2>Core modules</h2>
     <p>These modules are implemented and active in the current release.</p>
 
     <table class="provider-table">
@@ -97,7 +97,7 @@ description: Complete reference for every god-module in Olympus — active, plan
 <section>
   <div class="section-inner">
     <div class="section-label">Future</div>
-    <h2>Planned god-modules</h2>
+    <h2>Planned modules</h2>
     <p>These modules are defined in the architecture but not yet implemented. Each will follow the same pattern: single domain, communicates through Hermes, persists through Mnemosyne.</p>
 
     <table class="provider-table">
@@ -239,7 +239,7 @@ flowchart TD
         E6["routing.*"]
     end
 
-    subgraph Modules["GOD-MODULES"]
+    subgraph Modules["MODULES"]
         direction LR
         ATHENA["🦉 Athena\nIntent"]
         AEGIS["🛡️ Aegis\nSecurity"]

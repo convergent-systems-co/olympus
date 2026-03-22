@@ -38,7 +38,7 @@ description: Olympus is a governed, self-healing AI operating system for develop
     </div>
     <div>
       <div class="stat-value">11</div>
-      <div class="stat-label">God-modules in the pantheon</div>
+      <div class="stat-label">Modules in the pantheon</div>
     </div>
     <div>
       <div class="stat-value">∞</div>
@@ -590,11 +590,11 @@ olympus</code></pre>
       </div>
       <div class="card">
         <h3><a href="{{ '/pantheon' | relative_url }}">The Pantheon</a></h3>
-        <p>All 27 god-modules — active, planned, and future — with integration and security diagrams.</p>
+        <p>All 27 modules — active, planned, and future — with integration and security diagrams.</p>
       </div>
       <div class="card">
         <h3><a href="{{ '/Theming' | relative_url }}">Theming & Icons</a></h3>
-        <p>Design system, color palette, god-module icons.</p>
+        <p>Design system, color palette, module icons.</p>
       </div>
     </div>
   </div>
@@ -607,7 +607,7 @@ olympus</code></pre>
     <div class="section-label">Pricing</div>
     <h2>Free forever. Pay only for what you need.</h2>
     <p>
-      Olympus is free and open source. The full CLI, all god-modules, local-first routing,
+      Olympus is free and open source. The full CLI, all modules, local-first routing,
       and complete governance run on your machine at no cost. Paid tiers add cloud sync,
       unified billing, and team features.
     </p>
@@ -618,7 +618,7 @@ olympus</code></pre>
         <h3>Free</h3>
         <p style="font-size: 1.5rem; font-weight: bold; margin: 0.5rem 0;">$0</p>
         <ul style="text-align: left; padding-left: 1.2rem;">
-          <li>Full CLI with all god-modules</li>
+          <li>Full CLI with all modules</li>
           <li>Local-first model routing</li>
           <li>Complete governance pipeline</li>
           <li>Athena intent validation</li>

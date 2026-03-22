@@ -1,7 +1,7 @@
 ---
 layout: default
 title: System Architecture
-description: How Olympus works — the two-loop execution model, god-module boundaries, inter-module communication, and the full orchestration lifecycle.
+description: How Olympus works — the two-loop execution model, module boundaries, inter-module communication, and the full orchestration lifecycle.
 ---
 
 <section class="hero" style="padding: 3rem 0 2rem;">
