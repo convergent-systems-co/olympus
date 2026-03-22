@@ -1,0 +1,20 @@
+title: Olympus
+description: The AI Orchestration Layer for Developers
+url: "https://olympus.sh"
+baseurl: ""
+
+github_username: convergent-systems-co
+github_repo: olympus
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
