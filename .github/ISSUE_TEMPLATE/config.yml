@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://olympus.sh
+    about: Check the docs before opening an issue — your answer may already be there.
+  - name: Enterprise Support
+    url: mailto:hello@olympus.sh
+    about: Enterprise customers with SLA-backed support should email us directly.

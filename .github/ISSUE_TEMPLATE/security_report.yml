@@ -1,0 +1,61 @@
+name: Security Concern
+description: Report a security issue or vulnerability.
+labels: ["type/security", "priority/high", "status/needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **For critical security vulnerabilities** (credential exposure, remote code execution, data exfiltration), please email [hello@olympus.sh](mailto:hello@olympus.sh) directly instead of opening a public issue.
+
+        Use this template for general security concerns, hardening suggestions, or non-critical findings.
+
+  - type: input
+    id: version
+    attributes:
+      label: Olympus version
+      description: Run `olympus --version` and paste the output.
+      placeholder: "e.g. 1.4.2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Prompt injection / sanitization
+        - Secrets detection gap
+        - Governance bypass
+        - Data exposure risk
+        - Authentication / authorization
+        - Dependency vulnerability
+        - Hardening suggestion
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the security concern. Include steps to reproduce if applicable.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Estimated severity
+      options:
+        - Critical — active exploitation risk
+        - High — could lead to data exposure or unauthorized access
+        - Medium — defense-in-depth improvement
+        - Low — minor hardening opportunity
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else that would help us assess this — environment details, configuration, etc.
