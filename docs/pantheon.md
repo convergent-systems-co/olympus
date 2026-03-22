@@ -1,15 +1,15 @@
 ---
 layout: default
-title: The Modules
-description: Every module in Olympus explained — what it does, why it exists, and how it helps you write better code faster.
+title: Pantheon Modules
+description: Every Pantheon Module in Olympus explained — what it does, why it exists, and how it helps you write better code faster.
 ---
 
 <section class="hero" style="padding: 3rem 0 2rem;">
-  <div class="hero-badge">Modules</div>
-  <h1>The Modules</h1>
+  <div class="hero-badge">The Pantheon</div>
+  <h1>Pantheon Modules</h1>
   <p class="hero-sub">
-    Olympus is built from specialized modules, each named after a figure from Greek mythology.
-    Every module has a single job. They communicate through a secure internal bus and share
+    Olympus is built from specialized Pantheon Modules, each named after a figure from Greek mythology.
+    Every Pantheon Module has a single job. They communicate through a secure internal bus and share
     persistent memory — but never depend on each other directly.
   </p>
 </section>
@@ -19,25 +19,25 @@ description: Every module in Olympus explained — what it does, why it exists, 
 <section>
   <div class="section-inner">
     <div class="section-label">Active</div>
-    <h2>Core modules</h2>
-    <p>These modules are active in the current release and work together to deliver the full Olympus experience.</p>
+    <h2>Core Pantheon Modules</h2>
+    <p>These Pantheon Modules are active in the current release and work together to deliver the full Olympus experience.</p>
 
     <table class="provider-table">
       <thead>
-        <tr><th>Icon</th><th>Module</th><th>Role</th><th>What it does for you</th></tr>
+        <tr><th>Icon</th><th>Pantheon Module</th><th>Role</th><th>What it does for you</th></tr>
       </thead>
       <tbody>
         <tr>
           <td style="font-size: 1.5rem;">⚡</td>
           <td><strong>Zeus</strong></td>
           <td>Coordinator</td>
-          <td>Manages your session from start to finish — receives your requests, delegates to the right modules, and keeps everything in sync. Zeus never does the work himself; he makes sure the right specialist handles it.</td>
+          <td>Manages your session from start to finish — receives your requests, delegates to the right Pantheon Modules, and keeps everything in sync. Zeus never does the work himself; he makes sure the right specialist handles it.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🦉</td>
           <td><strong>Athena</strong></td>
           <td>Intent & Validation</td>
-          <td>Understands what you actually mean and turns it into concrete, verifiable specs. After the work is done, Athena checks that it truly matches your original request. This is the module that prevents AI agents from closing issues with stub implementations.</td>
+          <td>Understands what you actually mean and turns it into concrete, verifiable specs. After the work is done, Athena checks that it truly matches your original request. This is the Pantheon Module that prevents AI agents from closing issues with stub implementations.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🌈</td>
@@ -49,19 +49,19 @@ description: Every module in Olympus explained — what it does, why it exists, 
           <td style="font-size: 1.5rem;">🔗</td>
           <td><strong>Hermes</strong></td>
           <td>Internal Communication</td>
-          <td>The secure message bus that connects all modules. Each module has its own cryptographic signing key, so messages can't be spoofed or tampered with. Hermes only carries internal messages — nothing external.</td>
+          <td>The secure message bus that connects all Pantheon Modules. Each Pantheon Module has its own cryptographic signing key, so messages can't be spoofed or tampered with. Hermes only carries internal messages — nothing external.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🔨</td>
           <td><strong>Hephaestus</strong></td>
           <td>Code & Files</td>
-          <td>The hands that do the work. Handles code generation, branch management, merge conflict resolution, diff creation, and file operations. When Olympus writes or modifies code, Hephaestus is the module doing it.</td>
+          <td>The hands that do the work. Handles code generation, branch management, merge conflict resolution, diff creation, and file operations. When Olympus writes or modifies code, Hephaestus is the Pantheon Module doing it.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">👁️</td>
           <td><strong>Argus</strong></td>
           <td>Monitoring</td>
-          <td>Watches everything and reports on it — token usage, costs, CI pipeline status, flaky test detection. Argus sees everything but never acts on its own; it only provides data to help you and other modules make better decisions.</td>
+          <td>Watches everything and reports on it — token usage, costs, CI pipeline status, flaky test detection. Argus sees everything but never acts on its own; it only provides data to help you and other Pantheon Modules make better decisions.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🛡️</td>
@@ -97,12 +97,12 @@ description: Every module in Olympus explained — what it does, why it exists, 
 <section>
   <div class="section-inner">
     <div class="section-label">Coming Soon</div>
-    <h2>Planned modules</h2>
-    <p>These modules are designed and will follow the same pattern: single responsibility, secure communication, persistent memory.</p>
+    <h2>Planned Pantheon Modules</h2>
+    <p>These Pantheon Modules are designed and will follow the same pattern: single responsibility, secure communication, persistent memory.</p>
 
     <table class="provider-table">
       <thead>
-        <tr><th>Icon</th><th>Module</th><th>Role</th><th>What it will do</th></tr>
+        <tr><th>Icon</th><th>Pantheon Module</th><th>Role</th><th>What it will do</th></tr>
       </thead>
       <tbody>
         <tr>
@@ -239,7 +239,7 @@ flowchart TD
         E6["routing events"]
     end
 
-    subgraph Modules["MODULES"]
+    subgraph Modules["PANTHEON MODULES"]
         direction LR
         ATHENA["🦉 Athena\nIntent"]
         AEGIS["🛡️ Aegis\nSecurity"]
@@ -319,7 +319,7 @@ flowchart TD
       <span class="cmt">🧠(Mnemosyne): "Last time, the developer preferred 'theirs' for this file"</span><br>
       <span class="cmt">🔨(Hephaestus): Resolves using historical preference</span><br>
       <span class="cmt">🧠(Mnemosyne): Stores this resolution for next time</span><br>
-      <span class="cmt">🔗(Hermes): Notifies all modules — conflict resolved</span>
+      <span class="cmt">🔗(Hermes): Notifies all Pantheon Modules — conflict resolved</span>
     </div>
 
     <h3 style="margin-top: 2rem;">Example: Self-healing needs a paid model</h3>

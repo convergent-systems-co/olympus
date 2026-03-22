@@ -38,7 +38,7 @@ description: Olympus is a governed, self-healing AI operating system for develop
     </div>
     <div>
       <div class="stat-value">10</div>
-      <div class="stat-label">Intelligent modules working for you</div>
+      <div class="stat-label">Pantheon Modules working for you</div>
     </div>
     <div>
       <div class="stat-value">&infin;</div>
@@ -160,17 +160,17 @@ description: Olympus is a governed, self-healing AI operating system for develop
 
 <section>
   <div class="section-inner">
-    <div class="section-label">The Modules</div>
-    <h2>Specialized AI modules, each with one job</h2>
+    <div class="section-label">The Pantheon</div>
+    <h2>Specialized Pantheon Modules, each with one job</h2>
     <p>
-      Olympus is built from specialized modules — each named after a figure from Greek mythology.
-      Every module has a single responsibility and communicates through a secure internal bus.
+      Olympus is built from specialized Pantheon Modules — each named after a figure from Greek mythology.
+      Every Pantheon Module has a single responsibility and communicates through a secure internal bus.
       Think of them as a team of specialists, each handling what they're best at.
     </p>
 
     <table class="provider-table">
       <thead>
-        <tr><th>Module</th><th>Role</th><th>What it does for you</th></tr>
+        <tr><th>Pantheon Module</th><th>Role</th><th>What it does for you</th></tr>
       </thead>
       <tbody>
         <tr><td>⚡ <strong>Zeus</strong></td><td>Coordinator</td><td>Manages your session, delegates tasks to the right modules, and keeps everything in sync</td></tr>
@@ -187,7 +187,7 @@ description: Olympus is a governed, self-healing AI operating system for develop
     </table>
 
     <p style="text-align:center; margin-top:1rem;">
-      <a href="{{ '/pantheon' | relative_url }}">Explore all modules in detail &rarr;</a>
+      <a href="{{ '/pantheon' | relative_url }}">Explore all Pantheon Modules in detail &rarr;</a>
     </p>
   </div>
 </section>
@@ -574,9 +574,9 @@ olympus&gt; write tests for UserService.CreateAccount
       </tbody>
     </table>
 
-    <h3 style="margin-top: 2rem;">Module icons in output</h3>
+    <h3 style="margin-top: 2rem;">Pantheon Module icons in output</h3>
     <p>
-      When Olympus shows you a message, the icon and name tell you which module is talking:
+      When Olympus shows you a message, the icon and name tell you which Pantheon Module is talking:
     </p>
     <div class="hero-terminal">
       <span class="cmt">⚡(Zeus): Session resumed — picking up where you left off</span><br>
@@ -625,11 +625,11 @@ olympus&gt; write tests for UserService.CreateAccount
     <div class="cards">
       <div class="card">
         <h3><a href="{{ '/architecture' | relative_url }}">Architecture</a></h3>
-        <p>How the two-loop system works, how modules communicate, and how Olympus boots up.</p>
+        <p>How the two-loop system works, how Pantheon Modules communicate, and how Olympus boots up.</p>
       </div>
       <div class="card">
-        <h3><a href="{{ '/pantheon' | relative_url }}">The Modules</a></h3>
-        <p>Every module explained — what it does, why it exists, and how it helps you.</p>
+        <h3><a href="{{ '/pantheon' | relative_url }}">The Pantheon</a></h3>
+        <p>Every Pantheon Module explained — what it does, why it exists, and how it helps you.</p>
       </div>
       <div class="card">
         <h3><a href="{{ '/governance' | relative_url }}">Governance</a></h3>
@@ -644,7 +644,7 @@ olympus&gt; write tests for UserService.CreateAccount
         <p>How Olympus picks the right AI model for each task — local first, cloud as fallback.</p>
       </div>
       <div class="card">
-        <h3><a href="{{ '/module-boundaries' | relative_url }}">Module Domains</a></h3>
+        <h3><a href="{{ '/module-boundaries' | relative_url }}">Pantheon Module Domains</a></h3>
         <p>How responsibilities are divided so every capability has exactly one owner.</p>
       </div>
     </div>
@@ -658,7 +658,7 @@ olympus&gt; write tests for UserService.CreateAccount
     <div class="section-label">Pricing</div>
     <h2>Free to start. Pay only for what you need.</h2>
     <p>
-      The full Olympus experience — all modules, local-first routing, governance, memory,
+      The full Olympus experience — all Pantheon Modules, local-first routing, governance, memory,
       and self-healing — runs on your machine at no cost. Paid plans add cloud sync,
       analytics, and team features.
     </p>
@@ -669,7 +669,7 @@ olympus&gt; write tests for UserService.CreateAccount
         <h3>Free</h3>
         <p style="font-size: 1.5rem; font-weight: bold; margin: 0.5rem 0;">$0</p>
         <ul style="text-align: left; padding-left: 1.2rem;">
-          <li>All modules included</li>
+          <li>All Pantheon Modules included</li>
           <li>Local-first AI model routing</li>
           <li>Full governance pipeline</li>
           <li>Intent validation (Athena)</li>

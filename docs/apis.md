@@ -45,7 +45,7 @@ description: The issue format that prevents AI agents from closing work with stu
         <tr><th>Section</th><th>Purpose</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>Summary</strong></td><td>What needs to happen and why — with a module icon if a specific module is affected</td></tr>
+        <tr><td><strong>Summary</strong></td><td>What needs to happen and why — with a Pantheon Module icon if a specific Pantheon Module is affected</td></tr>
         <tr><td><strong>Current state</strong></td><td>What exists today — specific file paths, function names, and what's missing</td></tr>
         <tr><td><strong>Requirements</strong></td><td>Numbered concrete steps, each independently verifiable — no ambiguity</td></tr>
         <tr><td><strong>Verification</strong></td><td>Runnable commands with expected output — the acceptance criteria</td></tr>

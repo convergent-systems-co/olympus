@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Module Domains
-description: How responsibilities are divided across Olympus modules — every capability has exactly one owner, with clear rules for edge cases.
+title: Pantheon Module Domains
+description: How responsibilities are divided across Olympus Pantheon Modules — every capability has exactly one owner, with clear rules for edge cases.
 ---
 
 <section class="hero" style="padding: 3rem 0 2rem;">
   <div class="hero-badge">Architecture</div>
-  <h1>Module Domains</h1>
+  <h1>Pantheon Module Domains</h1>
   <p class="hero-sub">
-    Every capability in Olympus has exactly one owner. This page explains which module
+    Every capability in Olympus has exactly one owner. This page explains which Pantheon Module
     is responsible for what — and how edge cases are resolved when a feature could
     belong to more than one.
   </p>
@@ -21,7 +21,7 @@ description: How responsibilities are divided across Olympus modules — every c
 
     <table class="provider-table">
       <thead>
-        <tr><th>Module</th><th>Inspired by</th><th>Owns</th></tr>
+        <tr><th>Pantheon Module</th><th>Inspired by</th><th>Owns</th></tr>
       </thead>
       <tbody>
         <tr><td><strong>⚡ Zeus</strong></td><td>King of the gods</td><td>Session orchestration, task delegation, workflow coordination</td></tr>
@@ -45,7 +45,7 @@ description: How responsibilities are divided across Olympus modules — every c
     <h2>⚡ Zeus — the thin coordinator</h2>
     <p>
       Zeus manages the big picture but never does the work himself. He starts sessions,
-      delegates tasks to the right modules, and makes sure everything stays in sync.
+      delegates tasks to the right Pantheon Modules, and makes sure everything stays in sync.
     </p>
     <table class="provider-table">
       <thead>
@@ -64,7 +64,7 @@ description: How responsibilities are divided across Olympus modules — every c
 <section>
   <div class="section-inner">
     <div class="section-label">Edge Cases</div>
-    <h2>When a feature could belong to two modules</h2>
+    <h2>When a feature could belong to two Pantheon Modules</h2>
     <p>These rules are applied in order to determine ownership:</p>
     <table class="provider-table">
       <thead>
@@ -79,7 +79,7 @@ description: How responsibilities are divided across Olympus modules — every c
         <tr><td>5</td><td>Does it ask <strong>"should this proceed?"</strong></td><td>🐕 Cerberus</td></tr>
         <tr><td>6</td><td>Is it <strong>read-only monitoring</strong>?</td><td>👁️ Argus</td></tr>
         <tr><td>7</td><td>Does it <strong>understand intent</strong>?</td><td>🦉 Athena</td></tr>
-        <tr><td>8</td><td>Does it <strong>coordinate multiple modules</strong>?</td><td>⚡ Zeus</td></tr>
+        <tr><td>8</td><td>Does it <strong>coordinate multiple Pantheon Modules</strong>?</td><td>⚡ Zeus</td></tr>
       </tbody>
     </table>
   </div>
@@ -112,10 +112,10 @@ description: How responsibilities are divided across Olympus modules — every c
 <section>
   <div class="section-inner">
     <div class="section-label">Coming Soon</div>
-    <h2>Future modules</h2>
+    <h2>Future Pantheon Modules</h2>
     <table class="provider-table">
       <thead>
-        <tr><th>Module</th><th>Planned role</th></tr>
+        <tr><th>Pantheon Module</th><th>Planned role</th></tr>
       </thead>
       <tbody>
         <tr><td><strong>🔥 Prometheus</strong></td><td>Static analysis and foresight — catching problems before execution</td></tr>

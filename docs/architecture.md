@@ -46,8 +46,8 @@ description: Understand the two-loop architecture that makes Olympus a persisten
     <div class="hero-terminal">
       <span class="cmt">You give Olympus a task</span><br>
       <span class="cmt">  → Athena translates your intent into concrete specs</span><br>
-      <span class="cmt">  → Zeus delegates to the right modules</span><br>
-      <span class="cmt">  → Modules execute, checkpointing state as they go</span><br>
+      <span class="cmt">  → Zeus delegates to the right Pantheon Modules</span><br>
+      <span class="cmt">  → Pantheon Modules execute, checkpointing state as they go</span><br>
       <span class="cmt">  → You see natural-language results</span><br>
       <span class="cmt"></span><br>
       <span class="cmt">Process dies (Ctrl-C, crash, context exhaustion)</span><br>
@@ -81,11 +81,11 @@ description: Understand the two-loop architecture that makes Olympus a persisten
 
 <section>
   <div class="section-inner">
-    <div class="section-label">Modules</div>
-    <h2>Specialized modules working together</h2>
+    <div class="section-label">The Pantheon</div>
+    <h2>Specialized Pantheon Modules working together</h2>
     <p>
-      Olympus is built from specialized modules, each handling a single responsibility.
-      No module talks directly to another — they communicate through a secure internal bus
+      Olympus is built from specialized Pantheon Modules, each handling a single responsibility.
+      No Pantheon Module talks directly to another — they communicate through a secure internal bus
       (Hermes) and share state through persistent memory (Mnemosyne).
     </p>
 
@@ -127,7 +127,7 @@ flowchart TD
 
     <table class="provider-table">
       <thead>
-        <tr><th>Module</th><th>Role</th><th>What it does for you</th></tr>
+        <tr><th>Pantheon Module</th><th>Role</th><th>What it does for you</th></tr>
       </thead>
       <tbody>
         <tr><td><strong>⚡ Zeus</strong></td><td>Coordinator</td><td>Manages your session, delegates tasks, coordinates workflows</td></tr>
@@ -143,7 +143,7 @@ flowchart TD
       </tbody>
     </table>
     <p style="text-align:center; margin-top:1.5rem;">
-      <a href="{{ '/pantheon' | relative_url }}">Explore all modules in detail &rarr;</a>
+      <a href="{{ '/pantheon' | relative_url }}">Explore all Pantheon Modules in detail &rarr;</a>
     </p>
   </div>
 </section>
@@ -209,15 +209,15 @@ flowchart TD
 <section>
   <div class="section-inner">
     <div class="section-label">Communication</div>
-    <h2>How modules work together</h2>
-    <p>No module talks directly to another. All communication flows through two channels:</p>
+    <h2>How Pantheon Modules work together</h2>
+    <p>No Pantheon Module talks directly to another. All communication flows through two channels:</p>
 
     <div class="cards">
       <div class="card">
         <div class="card-icon">🔗</div>
         <h3>Hermes (real-time)</h3>
         <p>
-          A secure internal message bus. Each module has its own cryptographic signing key,
+          A secure internal message bus. Each Pantheon Module has its own cryptographic signing key,
           so messages can't be spoofed. Only the security module can publish security events.
           Only the monitoring module can publish CI events.
         </p>
@@ -226,7 +226,7 @@ flowchart TD
         <div class="card-icon">🧠</div>
         <h3>Mnemosyne (persistent)</h3>
         <p>
-          Shared persistent memory. Any module can read and write state, with isolation
+          Shared persistent memory. Any Pantheon Module can read and write state, with isolation
           to prevent conflicts. What Hermes carries in real-time, Mnemosyne preserves
           across sessions.
         </p>
@@ -240,7 +240,7 @@ flowchart TD
     <div class="section-label">Boot Sequence</div>
     <h2>Staged startup</h2>
     <p>
-      Modules start in a specific order to ensure safety. Security is active before any work
+      Pantheon Modules start in a specific order to ensure safety. Security is active before any work
       happens. Memory is available before any external connections. If a critical module fails,
       Olympus refuses to start.
     </p>
@@ -253,8 +253,8 @@ flowchart TD
         <tr><td>1</td><td>🛡️ Security</td><td>Security active before any work</td></tr>
         <tr><td>2</td><td>🧠 Memory (full access)</td><td>Persistence fully available</td></tr>
         <tr><td>3</td><td>🌈 AI model routing</td><td>External connectivity ready</td></tr>
-        <tr><td>4</td><td>All remaining modules</td><td>Everything registers</td></tr>
-        <tr><td>5</td><td>⚡ Coordinator</td><td>All modules healthy — Olympus is ready</td></tr>
+        <tr><td>4</td><td>All remaining Pantheon Modules</td><td>Everything registers</td></tr>
+        <tr><td>5</td><td>⚡ Coordinator</td><td>All Pantheon Modules healthy — Olympus is ready</td></tr>
       </tbody>
     </table>
   </div>
