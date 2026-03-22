@@ -1,16 +1,16 @@
 ---
 layout: default
-title: The Pantheon — All Modules
-description: Complete reference for every module in Olympus — active, planned, and future. Each module has one job, communicates through Hermes, and persists through Mnemosyne.
+title: The Modules
+description: Every module in Olympus explained — what it does, why it exists, and how it helps you write better code faster.
 ---
 
 <section class="hero" style="padding: 3rem 0 2rem;">
-  <div class="hero-badge">Reference · Modules</div>
-  <h1>The Pantheon</h1>
+  <div class="hero-badge">Modules</div>
+  <h1>The Modules</h1>
   <p class="hero-sub">
-    Every component in Olympus is named after a Greek mythological figure. Each has a single
-    domain. No module imports another directly — they communicate through Hermes (internal bus)
-    and persist through Mnemosyne (memory). Zeus coordinates. Everyone else executes.
+    Olympus is built from specialized modules, each named after a figure from Greek mythology.
+    Every module has a single job. They communicate through a secure internal bus and share
+    persistent memory — but never depend on each other directly.
   </p>
 </section>
 
@@ -20,72 +20,72 @@ description: Complete reference for every module in Olympus — active, planned,
   <div class="section-inner">
     <div class="section-label">Active</div>
     <h2>Core modules</h2>
-    <p>These modules are implemented and active in the current release.</p>
+    <p>These modules are active in the current release and work together to deliver the full Olympus experience.</p>
 
     <table class="provider-table">
       <thead>
-        <tr><th>Icon</th><th>Module</th><th>Domain</th><th>What it does</th></tr>
+        <tr><th>Icon</th><th>Module</th><th>Role</th><th>What it does for you</th></tr>
       </thead>
       <tbody>
         <tr>
           <td style="font-size: 1.5rem;">⚡</td>
           <td><strong>Zeus</strong></td>
-          <td>Orchestration</td>
-          <td>Master orchestrator — coordinates all modules, drives the agentic loop, manages session lifecycle and phase transitions. Never does the work himself.</td>
+          <td>Coordinator</td>
+          <td>Manages your session from start to finish — receives your requests, delegates to the right modules, and keeps everything in sync. Zeus never does the work himself; he makes sure the right specialist handles it.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🦉</td>
           <td><strong>Athena</strong></td>
-          <td>Reasoning & Intent</td>
-          <td>Translates human intent to concrete, verifiable specs. Gates specs before dispatch. Validates completed work matches original intent. The non-removable governance floor.</td>
+          <td>Intent & Validation</td>
+          <td>Understands what you actually mean and turns it into concrete, verifiable specs. After the work is done, Athena checks that it truly matches your original request. This is the module that prevents AI agents from closing issues with stub implementations.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🌈</td>
           <td><strong>Iris</strong></td>
-          <td>External Routing & Delivery</td>
-          <td>Routes requests to LLM providers (local → subscription → pay-per-token). Manages external auth, delivery (PRs, issues), and all external communication.</td>
+          <td>AI Model Routing</td>
+          <td>Picks the best AI model for each task. Routes to local models first (free, under 200ms), then subscription providers, then pay-per-token APIs as a last resort. Also handles delivering PRs and managing external authentication.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🔗</td>
           <td><strong>Hermes</strong></td>
-          <td>Internal Bus</td>
-          <td>Module-to-module pub/sub communication. Per-module Ed25519 signing keys prevent spoofing. Event schema validation ensures only authorized publishers. Internal only — carries no external messages.</td>
+          <td>Internal Communication</td>
+          <td>The secure message bus that connects all modules. Each module has its own cryptographic signing key, so messages can't be spoofed or tampered with. Hermes only carries internal messages — nothing external.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🔨</td>
           <td><strong>Hephaestus</strong></td>
-          <td>The Forge</td>
-          <td>Code generation, worktree management, branch operations, conflict resolution, diff crafting, and artifact building. The hands that do the work.</td>
+          <td>Code & Files</td>
+          <td>The hands that do the work. Handles code generation, branch management, merge conflict resolution, diff creation, and file operations. When Olympus writes or modifies code, Hephaestus is the module doing it.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">👁️</td>
           <td><strong>Argus</strong></td>
-          <td>Observation</td>
-          <td>Token tracking, cost metrics, CI monitoring, flaky test detection, Mnemosyne health monitoring. Sees everything, never sleeps, never acts — only reports.</td>
+          <td>Monitoring</td>
+          <td>Watches everything and reports on it — token usage, costs, CI pipeline status, flaky test detection. Argus sees everything but never acts on its own; it only provides data to help you and other modules make better decisions.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🛡️</td>
           <td><strong>Aegis</strong></td>
           <td>Security & Governance</td>
-          <td>Prompt sanitisation, secrets detection, structural encoding validation, exfiltration detection, rate limiting, governance panels, audit trails, RBAC.</td>
+          <td>Your security team. Scans for vulnerabilities, detects secrets in code, validates prompts against injection attacks, runs governance review panels, and maintains audit trails. When you see the green indicator, Aegis is why.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🐕</td>
           <td><strong>Cerberus</strong></td>
-          <td>Gates</td>
-          <td>Preflight checks, dispatch gates, circuit breakers, cost-aware self-healing. When local models are down and cloud costs money, Cerberus pauses and asks the developer.</td>
+          <td>Cost Protection</td>
+          <td>Guards the gate against unexpected spending. When local models are unavailable and a task would require a paid cloud model, Cerberus pauses and asks you before proceeding. Also handles preflight checks and circuit breakers.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🧠</td>
           <td><strong>Mnemosyne</strong></td>
-          <td>Memory & Persistence</td>
-          <td>Cross-session state, checkpoints, intent chains, developer preferences. RAID-like mirrored writes, versioned checkpoints, optional encrypted cloud sync. She is why Olympus survives death.</td>
+          <td>Memory</td>
+          <td>The reason Olympus survives crashes and remembers last Tuesday. Stores session state, checkpoints, your preferences, and project history. Encrypted at rest, with optional cloud sync for multi-machine support.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🧩</td>
           <td><strong>Epimetheus</strong></td>
-          <td>Retrospective</td>
-          <td>Post-execution analysis, cost patterns, failure learnings. Feeds insights back to Athena so future work avoids past mistakes. The god of hindsight.</td>
+          <td>Learning</td>
+          <td>Analyzes what happened after the work is done. Identifies cost patterns, failure modes, and successful strategies — then feeds these insights back so Olympus gets smarter over time.</td>
         </tr>
       </tbody>
     </table>
@@ -96,123 +96,123 @@ description: Complete reference for every module in Olympus — active, planned,
 
 <section>
   <div class="section-inner">
-    <div class="section-label">Future</div>
+    <div class="section-label">Coming Soon</div>
     <h2>Planned modules</h2>
-    <p>These modules are defined in the architecture but not yet implemented. Each will follow the same pattern: single domain, communicates through Hermes, persists through Mnemosyne.</p>
+    <p>These modules are designed and will follow the same pattern: single responsibility, secure communication, persistent memory.</p>
 
     <table class="provider-table">
       <thead>
-        <tr><th>Icon</th><th>Module</th><th>Domain</th><th>What it will do</th></tr>
+        <tr><th>Icon</th><th>Module</th><th>Role</th><th>What it will do</th></tr>
       </thead>
       <tbody>
         <tr>
           <td style="font-size: 1.5rem;">☀️</td>
           <td><strong>Apollo</strong></td>
-          <td>Evaluation & Scoring</td>
-          <td>Quality metrics, benchmarks, precision measurement. Scores code quality, model output quality, and governance panel accuracy.</td>
+          <td>Quality Scoring</td>
+          <td>Measures code quality, model output quality, and governance accuracy with concrete benchmarks.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🌙</td>
           <td><strong>Artemis</strong></td>
-          <td>Resource Optimization</td>
-          <td>Latency tuning, efficiency analysis, finding the optimal routing path. The hunter who never misses.</td>
+          <td>Optimization</td>
+          <td>Finds the most efficient routing paths, tunes latency, and optimizes resource usage.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">⚰️</td>
           <td><strong>Hades</strong></td>
-          <td>Long-term Storage</td>
-          <td>Cold data archival, deep history, long-term project memory. The keeper of what is no longer active but must not be forgotten.</td>
+          <td>Archival</td>
+          <td>Long-term storage for project history that's no longer active but shouldn't be forgotten.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🍎</td>
           <td><strong>Persephone</strong></td>
           <td>Data Lifecycle</td>
-          <td>Active/decay rotation, retention policies. Decides what memory stays warm and what descends to Hades.</td>
+          <td>Manages what memory stays active and what gets archived, with configurable retention policies.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🌾</td>
           <td><strong>Demeter</strong></td>
           <td>Data Ingestion</td>
-          <td>Structured input processing, feeding the system. Repository scanning, file parsing, context extraction.</td>
+          <td>Processes structured inputs — repository scanning, file parsing, and context extraction.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🍇</td>
           <td><strong>Dionysus</strong></td>
           <td>Creative Generation</td>
-          <td>Exploratory and divergent outputs, brainstorming, creative problem-solving. The chaos within the structure.</td>
+          <td>Exploratory and divergent thinking — brainstorming, creative problem-solving, and alternative approaches.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">⚔️</td>
           <td><strong>Ares</strong></td>
           <td>Adversarial Testing</td>
-          <td>Red team operations, chaos engineering, stress testing. Finds what breaks before production does.</td>
+          <td>Red team operations and stress testing — finds what breaks before production does.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🏆</td>
           <td><strong>Nike</strong></td>
           <td>Success Evaluation</td>
-          <td>Victory conditions, acceptance criteria, pass/fail determination. Declares when the work is truly done.</td>
+          <td>Defines and evaluates victory conditions — declares when the work is truly complete.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🔥</td>
           <td><strong>Prometheus</strong></td>
           <td>Static Analysis</td>
-          <td>Code inspection before execution, foresight scanning. Sees problems before they happen — gave fire to mortals.</td>
+          <td>Inspects code before execution — catches problems before they happen.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🌐</td>
           <td><strong>Atlas</strong></td>
           <td>Workload Distribution</td>
-          <td>Cluster scheduling, load balancing across nodes. Holds up the sky so others can work beneath it.</td>
+          <td>Distributes work across resources for parallel execution and load balancing.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">⚙️</td>
           <td><strong>Helios</strong></td>
           <td>Scheduling</td>
-          <td>Cron jobs, timed execution, daily cycles. The sun that rises on schedule, every time.</td>
+          <td>Timed execution, cron jobs, and scheduled tasks — reliable, on-time, every time.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🌘</td>
           <td><strong>Selene</strong></td>
-          <td>Snapshots & Rollback</td>
-          <td>Checkpoints, phase restore, rewind. The moon that cycles — always returning to where it was.</td>
+          <td>Snapshots</td>
+          <td>Checkpoint and rollback capabilities — rewind to any previous state.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">🧬</td>
           <td><strong>Metis</strong></td>
-          <td>Strategy & Planning</td>
-          <td>Meta-reasoning, plan optimization, cunning counsel. The titaness whose wisdom Zeus swallowed to gain insight.</td>
+          <td>Strategy</td>
+          <td>Meta-reasoning and plan optimization — higher-level strategic thinking.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">⚖️</td>
           <td><strong>Themis</strong></td>
-          <td>Policy Enforcement</td>
-          <td>Rules, fairness, compliance, balance. The scales that weigh every action against the law.</td>
+          <td>Policy</td>
+          <td>Rules and compliance enforcement — ensures every action meets organizational policies.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">💤</td>
           <td><strong>Hypnos</strong></td>
-          <td>Background Processing</td>
-          <td>Idle tasks, low-priority queues, deferred work. The god who works while you sleep.</td>
+          <td>Background Tasks</td>
+          <td>Low-priority work that runs while you're away — idle optimization, deferred processing.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">☁️</td>
           <td><strong>Morpheus</strong></td>
           <td>Simulation</td>
-          <td>Branching scenarios, what-if analysis, shape-shifting outcomes. Dreams of possibilities before committing to reality.</td>
+          <td>What-if analysis and branching scenarios — explore possibilities before committing.</td>
         </tr>
         <tr>
           <td style="font-size: 1.5rem;">📢</td>
           <td><strong>Echo</strong></td>
-          <td>Logging & Replay</td>
-          <td>Event recording, session playback, audit trail. The nymph who repeats what was said — perfectly, every time.</td>
+          <td>Replay</td>
+          <td>Event recording and session playback — review exactly what happened, when, and why.</td>
         </tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<!-- ───────────────── INTEGRATION DIAGRAM ───────────────── -->
+<!-- ───────────────── HOW THEY CONNECT ───────────────── -->
 
 <section>
   <div class="section-inner">
@@ -221,51 +221,51 @@ description: Complete reference for every module in Olympus — active, planned,
 
 <div class="mermaid">
 flowchart TD
-    subgraph Developer["DEVELOPER"]
+    subgraph Developer["YOU"]
         DEV["Natural conversation"]
     end
 
-    subgraph TUI["OLY — TUI Persona"]
-        OLY["⚡ Zeus\nOrchestrator"]
+    subgraph TUI["OLYMPUS"]
+        OLY["⚡ Zeus\nCoordinator"]
     end
 
-    subgraph Bus["🔗 HERMES — Internal Bus\n(Ed25519 signed · schema validated)"]
+    subgraph Bus["🔗 HERMES — Secure Message Bus"]
         direction LR
-        E1["security.*"]
-        E2["intent.*"]
-        E3["forge.*"]
-        E4["ci.*"]
-        E5["gate.*"]
-        E6["routing.*"]
+        E1["security events"]
+        E2["intent events"]
+        E3["code events"]
+        E4["CI events"]
+        E5["gate events"]
+        E6["routing events"]
     end
 
     subgraph Modules["MODULES"]
         direction LR
         ATHENA["🦉 Athena\nIntent"]
         AEGIS["🛡️ Aegis\nSecurity"]
-        HEPH["🔨 Hephaestus\nForge"]
-        ARGUS["👁️ Argus\nObserve"]
-        CERB["🐕 Cerberus\nGates"]
-        EPIM["🧩 Epimetheus\nHindsight"]
+        HEPH["🔨 Hephaestus\nCode"]
+        ARGUS["👁️ Argus\nMonitor"]
+        CERB["🐕 Cerberus\nCost"]
+        EPIM["🧩 Epimetheus\nLearning"]
     end
 
-    subgraph External["🌈 IRIS — External Routing"]
+    subgraph External["🌈 IRIS — AI Model Routing"]
         direction LR
-        LOCAL["Local Model\nfree · &lt;200ms"]
-        SUB1["Subscription Provider\nno per-token cost"]
+        LOCAL["Local Model\nfree &middot; &lt;200ms"]
+        SUB1["Subscription\nno per-token cost"]
         SUB2["Subscription Fallback\nno per-token cost"]
-        PAID["Pay-per-token API\nlast resort"]
-        DELIVERY["Delivery API\nPRs · Issues"]
+        PAID["Pay-per-token\nlast resort"]
+        DELIVERY["Delivery\nPRs &middot; Issues"]
     end
 
-    subgraph Memory["🧠 MNEMOSYNE — Persistence"]
+    subgraph Memory["🧠 MNEMOSYNE — Persistent Memory"]
         direction LR
         SESSIONS["sessions"]
         INTENTS["intents"]
         PRSTATE["pr_state"]
         CIHISTORY["ci_history"]
         CONFLICTS["conflict_log"]
-        PREFS["dev_prefs"]
+        PREFS["preferences"]
     end
 
     DEV --> OLY
@@ -295,12 +295,6 @@ flowchart TD
     style CERB fill:#145DA0,color:#E5E7EB,stroke:#3FA7D6
     style EPIM fill:#145DA0,color:#E5E7EB,stroke:#3FA7D6
 
-    style OLLAMA fill:#2E3440,color:#A3BE8C,stroke:#A3BE8C
-    style CLAUDE fill:#2E3440,color:#88C0D0,stroke:#88C0D0
-    style COPILOT fill:#2E3440,color:#81A1C1,stroke:#81A1C1
-    style API fill:#3a2020,color:#BF616A,stroke:#BF616A
-    style GITHUB fill:#2E3440,color:#EBCB8B,stroke:#EBCB8B
-
     style SESSIONS fill:#3A4047,color:#FFD2A6,stroke:#FF8C1A
     style INTENTS fill:#3A4047,color:#FFD2A6,stroke:#FF8C1A
     style PRSTATE fill:#3A4047,color:#FFD2A6,stroke:#FF8C1A
@@ -312,154 +306,30 @@ flowchart TD
   </div>
 </section>
 
-<!-- ───────────────── SECURITY ───────────────── -->
+<!-- ───────────────── COMMUNICATION EXAMPLE ───────────────── -->
 
 <section>
   <div class="section-inner">
-    <div class="section-label">Security</div>
-    <h2>Security measures</h2>
+    <div class="section-label">In Practice</div>
+    <h2>How modules collaborate</h2>
 
-<div class="mermaid">
-flowchart TD
-    subgraph HermesSec["🔗 Hermes Bus Security"]
-        KEYS["Per-module Ed25519 keys\n(ephemeral per boot)"]
-        SCHEMA["Event schema validation\n(only authorized publishers)"]
-        HMAC["HMAC-signed envelopes\n(tamper detection)"]
-    end
-
-    subgraph AegisSec["🛡️ Aegis Security Layer"]
-        SANITISE["Prompt sanitisation\n(injection prevention)"]
-        SECRETS["Secret detection\n(sk-ant-*, ghp_*, AKIA*)"]
-        ENCODING["Structural encoding\n(base64/hex/rot13 detection)"]
-        EXFIL["Exfiltration detection\n(data loss prevention)"]
-        RATE["Rate limiting\n(abuse prevention)"]
-        TIMEOUT["Session timeout\n(idle lockout)"]
-    end
-
-    subgraph AuditSec["📢 Audit Security"]
-        CHAIN["Hash-chained audit trail\n(SHA-256 event chain)"]
-        BEARER["Correlation bearer tokens\n(age X25519 encrypted)"]
-        IDENTITY["Fail-closed identity\n(dispatch record required)"]
-        EMISSION["Server-authoritative timestamps\n(replay prevention)"]
-    end
-
-    subgraph MnemosyneSec["🧠 Mnemosyne Security"]
-        AGE["age encryption at rest"]
-        RAID["RAID-like mirrored writes\n(primary + mirror)"]
-        SHA["SHA-256 integrity on read"]
-        CLOUD["Encrypted cloud sync\n(encrypted before upload)"]
-    end
-
-    HermesSec --> AegisSec
-    AegisSec --> AuditSec
-    AuditSec --> MnemosyneSec
-
-    style HermesSec fill:#0A3D62,color:#E5E7EB,stroke:#3FA7D6
-    style AegisSec fill:#0A3D62,color:#E5E7EB,stroke:#FF6A00
-    style AuditSec fill:#0A3D62,color:#E5E7EB,stroke:#EBCB8B
-    style MnemosyneSec fill:#0A3D62,color:#E5E7EB,stroke:#FF8C1A
-
-    style KEYS fill:#145DA0,color:#E5E7EB,stroke:#3FA7D6
-    style SCHEMA fill:#145DA0,color:#E5E7EB,stroke:#3FA7D6
-    style HMAC fill:#145DA0,color:#E5E7EB,stroke:#3FA7D6
-
-    style SANITISE fill:#2F343A,color:#FF6A00,stroke:#FF6A00
-    style SECRETS fill:#2F343A,color:#FF6A00,stroke:#FF6A00
-    style ENCODING fill:#2F343A,color:#FF6A00,stroke:#FF6A00
-    style EXFIL fill:#2F343A,color:#FF6A00,stroke:#FF6A00
-    style RATE fill:#2F343A,color:#FF6A00,stroke:#FF6A00
-    style TIMEOUT fill:#2F343A,color:#FF6A00,stroke:#FF6A00
-
-    style CHAIN fill:#2F343A,color:#EBCB8B,stroke:#EBCB8B
-    style BEARER fill:#2F343A,color:#EBCB8B,stroke:#EBCB8B
-    style IDENTITY fill:#2F343A,color:#EBCB8B,stroke:#EBCB8B
-    style EMISSION fill:#2F343A,color:#EBCB8B,stroke:#EBCB8B
-
-    style AGE fill:#3A4047,color:#FF8C1A,stroke:#FF8C1A
-    style RAID fill:#3A4047,color:#FF8C1A,stroke:#FF8C1A
-    style SHA fill:#3A4047,color:#FF8C1A,stroke:#FF8C1A
-    style CLOUD fill:#3A4047,color:#FF8C1A,stroke:#FF8C1A
-</div>
-
-    <p>
-      Every layer enforces security independently. If Hermes is compromised, Aegis still
-      catches malicious prompts. If Aegis is bypassed, the audit chain detects tampering.
-      If the audit log is corrupted, Mnemosyne's integrity checks catch it on next read.
-      Defense in depth — no single point of failure.
-    </p>
-  </div>
-</section>
-
-<!-- ───────────────── COMMUNICATION ───────────────── -->
-
-<section>
-  <div class="section-inner">
-    <div class="section-label">Communication</div>
-    <h2>How the gods talk</h2>
-    <p>
-      No module imports another. All communication flows through two channels:
-    </p>
-
-    <div class="cards">
-      <div class="card">
-        <div class="card-icon">🔗</div>
-        <h3>Hermes (real-time)</h3>
-        <p>
-          In-process pub/sub bus. Per-module Ed25519 signing keys. Event schema validation.
-          Only Aegis can publish security events. Only Argus can publish CI events.
-          Internal only — no external messages.
-        </p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🧠</div>
-        <h3>Mnemosyne (persistent)</h3>
-        <p>
-          Any module can read and write state. Module-scoped collections prevent collision.
-          Cross-session persistence. RAID-like mirrored writes. What Hermes carries in
-          real-time, Mnemosyne preserves across time.
-        </p>
-      </div>
-    </div>
-
-    <h3 style="margin-top: 2rem;">Example: 🔨 Hephaestus hits a merge conflict</h3>
+    <h3>Example: Hephaestus hits a merge conflict</h3>
     <div class="hero-terminal">
-      <span class="cmt">🔨(Hephaestus): publishes "forge.conflict" on Hermes bus</span><br>
-      <span class="cmt">🧠(Mnemosyne): Hephaestus reads conflict_history — "dev preferred theirs last time"</span><br>
-      <span class="cmt">🔨(Hephaestus): resolves conflict using historical preference</span><br>
-      <span class="cmt">🧠(Mnemosyne): stores resolution for next time</span><br>
-      <span class="cmt">🔗(Hermes): delivers "forge.conflict_resolved" to all subscribers</span>
+      <span class="cmt">🔨(Hephaestus): "I've hit a merge conflict"</span><br>
+      <span class="cmt">🧠(Mnemosyne): "Last time, the developer preferred 'theirs' for this file"</span><br>
+      <span class="cmt">🔨(Hephaestus): Resolves using historical preference</span><br>
+      <span class="cmt">🧠(Mnemosyne): Stores this resolution for next time</span><br>
+      <span class="cmt">🔗(Hermes): Notifies all modules — conflict resolved</span>
     </div>
-  </div>
-</section>
 
-<!-- ───────────────── BOOT ───────────────── -->
-
-<section>
-  <div class="section-inner">
-    <div class="section-label">Boot</div>
-    <h2>Staged initialization</h2>
-    <p>
-      Modules start in order. Security is active before any work. Memory is available
-      before any external connections. If a critical module fails, Zeus refuses to start.
-    </p>
-
-    <table class="provider-table">
-      <thead>
-        <tr><th>Stage</th><th>Modules</th><th>Why this order</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>0</strong></td><td>🧠 Mnemosyne (read-only) + 🔗 Hermes</td><td>Kernel substrate — no external dependencies</td></tr>
-        <tr><td><strong>1</strong></td><td>🛡️ Aegis</td><td>Security active before any work</td></tr>
-        <tr><td><strong>2</strong></td><td>🧠 Mnemosyne (read-write)</td><td>Full persistence with bus for state change events</td></tr>
-        <tr><td><strong>3</strong></td><td>🌈 Iris</td><td>External connectivity — reads credentials from Mnemosyne</td></tr>
-        <tr><td><strong>4</strong></td><td>🐕 🦉 👁️ 🔨 🧩</td><td>All remaining modules register</td></tr>
-        <tr><td><strong>5</strong></td><td>⚡ Zeus</td><td>All modules healthy — orchestration begins</td></tr>
-      </tbody>
-    </table>
-
-    <p style="margin-top: 1rem;">
-      <strong>Critical modules</strong> (boot fails if these fail): Mnemosyne, Hermes, Aegis, Iris<br>
-      <strong>Non-critical modules</strong> (degraded mode): Argus, Epimetheus, Cerberus, Athena, Hephaestus
-    </p>
+    <h3 style="margin-top: 2rem;">Example: Self-healing needs a paid model</h3>
+    <div class="hero-terminal">
+      <span class="cmt">🔨(Hephaestus): "I need AI help to resolve this conflict"</span><br>
+      <span class="cmt">🐕(Cerberus): "Local models are down — cloud would cost money"</span><br>
+      <span class="cmt">🐕(Cerberus): Pauses and asks you: wait, pay, or skip?</span><br>
+      <span class="cmt">You choose "wait"</span><br>
+      <span class="cmt">🐕(Cerberus): Polls local models every 30 seconds</span><br>
+      <span class="cmt">🔨(Hephaestus): Local model is back — conflict resolved for free</span>
+    </div>
   </div>
 </section>
