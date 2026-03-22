@@ -1,0 +1,56 @@
+name: Support Request
+description: Get help with installation, configuration, or usage.
+labels: ["status/needs-triage", "status/needs-info"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Need help getting Olympus working? We're here to help. Please provide as much detail as possible so we can assist you quickly.
+
+        **Enterprise customers** — if you have an SLA, please email [hello@olympus.sh](mailto:hello@olympus.sh) for priority support.
+
+  - type: input
+    id: version
+    attributes:
+      label: Olympus version
+      description: Run `olympus --version` and paste the output.
+      placeholder: "e.g. 1.4.2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: What do you need help with?
+      options:
+        - Installation
+        - Configuration — routing, providers, or governance
+        - Local model setup
+        - Cloud provider setup
+        - Understanding governance results
+        - Performance or cost concerns
+        - Upgrading from a previous version
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe your situation
+      description: What are you trying to do and where are you stuck?
+    validations:
+      required: true
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: What have you already tried?
+      description: Any steps, docs, or commands you've already attempted.
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: Paste any error messages or terminal output. This will be formatted as code automatically.
+      render: shell
