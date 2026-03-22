@@ -522,7 +522,7 @@ olympus providers add my-provider \
 <section class="install-section" id="install">
   <div class="section-inner">
     <div class="section-label">Install</div>
-    <h2>Get started in two minutes</h2>
+    <h2>Get started in a few minutes</h2>
 
     <pre><code class="language-bash"># Install via Homebrew
 brew install convergent-systems-co/tap/olympus
