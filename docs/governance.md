@@ -1,34 +1,33 @@
 ---
 layout: default
-title: Governance Pipeline
-description: How Olympus reviews every pull request with automated governance panels — code review, security, threat modeling, cost analysis, documentation, and data governance.
+title: Governance
+description: How Olympus automatically reviews every pull request with six independent panels — security, architecture, documentation, cost, threat modeling, and data governance.
 ---
 
 <section class="hero" style="padding: 3rem 0 2rem;">
-  <div class="hero-badge">Governance · Automated Review</div>
-  <h1>Governance Pipeline</h1>
+  <div class="hero-badge">Governance</div>
+  <h1>Automated Code Governance</h1>
   <p class="hero-sub">
-    Every pull request passes through six independent review panels before merge.
-    Each panel produces a structured verdict with findings, severity ratings, and
-    a machine-readable emission. No PR merges without governance approval.
+    Every pull request passes through independent review panels before merge.
+    Each panel analyzes the change from a different perspective — security, architecture,
+    cost, compliance — and produces a clear verdict. No PR merges without governance approval.
   </p>
 </section>
 
 <section>
   <div class="section-inner">
     <div class="section-label">How It Works</div>
-    <h2>Automated multi-panel review</h2>
+    <h2>Multi-panel automated review</h2>
     <p>
-      When a PR is opened against a governed repository, the Olympus governance workflow
-      triggers automatically. Six panels run in parallel, each analyzing the diff from a
-      different perspective.
+      When a PR is opened, six review panels run in parallel. Each one examines the change
+      from a different angle, like having a team of senior specialists review every PR.
     </p>
 
 <div class="mermaid">
 flowchart LR
-    PR["Pull Request"] --> GW["Governance Workflow"]
+    PR["Pull Request"] --> GW["Governance"]
     GW --> CR["Code Review"]
-    GW --> SR["Security Review"]
+    GW --> SR["Security"]
     GW --> TM["Threat Modeling"]
     GW --> CA["Cost Analysis"]
     GW --> DG["Data Governance"]
@@ -62,21 +61,21 @@ flowchart LR
 <section>
   <div class="section-inner">
     <div class="section-label">Panels</div>
-    <h2>Standard review panels</h2>
+    <h2>What gets reviewed</h2>
 
     <table class="provider-table">
       <thead>
-        <tr><th>Panel</th><th>What It Reviews</th><th>Runs</th></tr>
+        <tr><th>Panel</th><th>What it checks</th><th>Runs</th></tr>
       </thead>
       <tbody>
         <tr>
           <td><strong>Code Review</strong></td>
-          <td>Architecture, code quality, test coverage, error handling, performance</td>
+          <td>Architecture decisions, code quality, test coverage, error handling, performance implications</td>
           <td>Every PR</td>
         </tr>
         <tr>
           <td><strong>Security Review</strong></td>
-          <td>Injection risks, secrets exposure, auth gaps, dependency vulnerabilities</td>
+          <td>Injection risks, secrets exposure, authentication gaps, dependency vulnerabilities</td>
           <td>Every PR</td>
         </tr>
         <tr>
@@ -86,28 +85,18 @@ flowchart LR
         </tr>
         <tr>
           <td><strong>Cost Analysis</strong></td>
-          <td>Cloud resource changes, token consumption impact, infrastructure costs</td>
+          <td>Cloud resource impact, token consumption changes, infrastructure costs</td>
           <td>Every PR</td>
         </tr>
         <tr>
           <td><strong>Data Governance</strong></td>
-          <td>PII handling, data classification, retention policies, compliance</td>
+          <td>PII handling, data classification, retention policies, compliance requirements</td>
           <td>Every PR</td>
         </tr>
         <tr>
           <td><strong>Documentation</strong></td>
-          <td>API docs, README accuracy, changelog, breaking change notices</td>
+          <td>API docs accuracy, changelog updates, breaking change notices</td>
           <td>Every PR</td>
-        </tr>
-        <tr>
-          <td><strong>FinOps Review</strong></td>
-          <td>Cloud spend impact, resource provisioning, cost optimization</td>
-          <td>Conditional</td>
-        </tr>
-        <tr>
-          <td><strong>Copilot Review</strong></td>
-          <td>AI-generated code patterns, license compliance, hallucination detection</td>
-          <td>Conditional</td>
         </tr>
       </tbody>
     </table>
@@ -117,22 +106,21 @@ flowchart LR
 <section>
   <div class="section-inner">
     <div class="section-label">Findings</div>
-    <h2>Multi-perspective analysis</h2>
+    <h2>Clear severity ratings</h2>
     <p>
-      Each panel decomposes its analysis across 3–6 named perspectives. Every perspective
-      represents a distinct stakeholder viewpoint (e.g., Security Auditor, Backend Engineer,
-      Compliance Officer). Findings are tagged by severity:
+      Each panel produces findings tagged by severity. You know exactly what needs attention
+      and what's just a suggestion.
     </p>
     <table class="provider-table">
       <thead>
-        <tr><th>Severity</th><th>Meaning</th><th>Impact</th></tr>
+        <tr><th>Severity</th><th>Meaning</th><th>Impact on your PR</th></tr>
       </thead>
       <tbody>
-        <tr><td><code>[CRITICAL]</code></td><td>Security or correctness defect</td><td>Blocks merge</td></tr>
-        <tr><td><code>[HIGH]</code></td><td>Significant production risk</td><td>Blocks merge</td></tr>
-        <tr><td><code>[MEDIUM]</code></td><td>Notable gap, should fix</td><td>Non-blocking</td></tr>
-        <tr><td><code>[LOW]</code></td><td>Minor improvement opportunity</td><td>Advisory</td></tr>
-        <tr><td><code>[INFO]</code></td><td>Informational observation</td><td>No action</td></tr>
+        <tr><td><code>[CRITICAL]</code></td><td>Security or correctness issue</td><td>Blocks merge — must fix before proceeding</td></tr>
+        <tr><td><code>[HIGH]</code></td><td>Significant production risk</td><td>Blocks merge — must fix before proceeding</td></tr>
+        <tr><td><code>[MEDIUM]</code></td><td>Notable gap that should be addressed</td><td>Non-blocking — recommended fix</td></tr>
+        <tr><td><code>[LOW]</code></td><td>Minor improvement opportunity</td><td>Advisory — fix when convenient</td></tr>
+        <tr><td><code>[INFO]</code></td><td>Informational observation</td><td>No action needed</td></tr>
       </tbody>
     </table>
   </div>
@@ -141,99 +129,84 @@ flowchart LR
 <section>
   <div class="section-inner">
     <div class="section-label">Verdicts</div>
-    <h2>Structured machine-readable verdicts</h2>
+    <h2>What you see</h2>
     <p>
-      Every panel produces two artifacts: a human-readable markdown report and a
-      machine-readable JSON emission. The JSON verdict is the authoritative signal
-      for downstream tooling.
+      Each panel produces a clear verdict. You get a plain-language summary, and the full
+      technical details are available on demand.
     </p>
-
-    <pre><code class="language-json">{
-  "panel_name":       "security-review",
-  "pr_number":        142,
-  "commit_sha":       "a1b2c3d4...",
-  "panel_version":    "1.0",
-  "verdict":          "approve",
-  "confidence_score": 0.92,
-  "risk_level":       "low",
-  "findings":         ["No secrets detected", "Auth flow validated"],
-  "summary":          "Change introduces no new attack surface..."
-}</code></pre>
 
     <table class="provider-table">
       <thead>
-        <tr><th>Verdict</th><th>Meaning</th></tr>
+        <tr><th>Verdict</th><th>What it means</th></tr>
       </thead>
       <tbody>
-        <tr><td><code>approve</code></td><td>Change may proceed to merge</td></tr>
-        <tr><td><code>request_changes</code></td><td>Blocked — coder must address findings before re-review</td></tr>
-        <tr><td><code>block</code></td><td>Hard block — escalate to developer, do not merge</td></tr>
+        <tr><td><strong>Approve</strong></td><td>This panel found no issues — your change is good to go</td></tr>
+        <tr><td><strong>Request Changes</strong></td><td>Issues found that need to be fixed before the PR can merge</td></tr>
+        <tr><td><strong>Block</strong></td><td>Critical issue — escalated for your attention, merge prevented</td></tr>
       </tbody>
     </table>
     <p>
-      Confidence scores below <strong>0.70</strong> automatically flag the PR for human review.
-      The aggregate confidence across all panels is the minimum of individual panel scores.
+      Confidence scores below <strong>0.70</strong> automatically flag the PR for human review,
+      ensuring that uncertain findings get a second look.
     </p>
   </div>
 </section>
 
 <section>
   <div class="section-inner">
-    <div class="section-label">Artifacts</div>
-    <h2>Report artifacts</h2>
-    <p>All governance artifacts follow a strict naming convention:</p>
-    <pre><code>.artifacts/panels/&lt;PR-number&gt;-&lt;panel-type&gt;.md
-.artifacts/emissions/&lt;PR-number&gt;-&lt;panel-type&gt;.json</code></pre>
-    <p>Examples:</p>
-    <ul>
-      <li><code>.artifacts/panels/142-code-review.md</code></li>
-      <li><code>.artifacts/emissions/142-security-review.json</code></li>
-    </ul>
+    <div class="section-label">Transparency</div>
+    <h2>Visible, not intrusive</h2>
+    <p>
+      Governance works like the lock icon on HTTPS — you know it's there, but it doesn't
+      get in your way. Here's what you see at each level:
+    </p>
+
+    <table class="provider-table">
+      <thead>
+        <tr><th>What you see</th><th>What's happening</th><th>When</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>🟢 Green indicator</td><td>All panels passed</td><td>Always visible</td></tr>
+        <tr><td>Plain-language message</td><td>"Your PR was approved" or "Security issue found"</td><td>When governance has a result</td></tr>
+        <tr><td><code>/governance</code> command</td><td>Full details — all panels, findings, verdicts</td><td>Whenever you want to look</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <div class="section-label">The Floor</div>
+    <h2>Intent validation — always on</h2>
+    <p>
+      The governance engine is customizable — you can disable individual panels or replace
+      the engine entirely. But the <strong>Athena intent loop</strong> always runs. It verifies
+      that completed work matches the original request, preventing issues from being closed
+      with incomplete or stub implementations.
+    </p>
+    <p>
+      This is the non-removable floor. You can change <em>how much</em> governance runs.
+      You cannot have <em>zero</em> governance.
+    </p>
   </div>
 </section>
 
 <section>
   <div class="section-inner">
     <div class="section-label">Configuration</div>
-    <h2>Customizing governance</h2>
+    <h2>Customize to your needs</h2>
     <p>
-      The governance pipeline is configured in <code>project.yaml</code>. Disable individual panels,
-      adjust the dispatch strategy, or replace the engine entirely:
+      Configure governance in your project settings. Enable or disable panels,
+      choose your governance depth, or bring your own engine.
     </p>
     <pre><code class="language-yaml">governance:
   engine: "default"          # "default" | "minimal" | "custom"
-  dispatch_strategy: "batch" # "interleaved" | "batch"
-  parallel_tech_leads: 5
-  parallel_coders: 10
   panels:
     security: true
     architecture: true
     documentation: false     # disable individual panels</code></pre>
-    <p>
-      The <strong>Athena intent loop</strong> always runs regardless of engine choice.
-      It is the non-removable floor of governance — ensuring that every issue is verified
-      against its original intent before closure.
-    </p>
     <p style="text-align:center; margin-top:1.5rem;">
-      <a href="{{ '/apis' | relative_url }}">See the APIS standard for issue specification →</a>
-    </p>
-  </div>
-</section>
-
-<section>
-  <div class="section-inner">
-    <div class="section-label">Extend</div>
-    <h2>Adding custom panels</h2>
-    <p>To add a new governance panel:</p>
-    <ol>
-      <li><strong>Create a prompt file</strong> at <code>src/internal/embed/_content/prompts/reviews/&lt;panel-type&gt;.md</code></li>
-      <li><strong>Register the panel</strong> in the governance workflow</li>
-      <li><strong>Define 3–6 perspectives</strong> — each representing a distinct stakeholder viewpoint</li>
-      <li><strong>Emit the JSON schema</strong> with all required fields: panel_name, verdict, confidence_score, findings</li>
-    </ol>
-    <p>
-      Panel prompts instruct the reviewing agent to output a header block, perspective findings,
-      consolidated assessment, and a structured emission block.
+      <a href="{{ '/apis' | relative_url }}">See the APIS standard for issue specification &rarr;</a>
     </p>
   </div>
 </section>

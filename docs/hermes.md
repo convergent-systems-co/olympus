@@ -1,47 +1,47 @@
 ---
 layout: default
-title: Hermes — Provider Router
-description: How Hermes routes every prompt through the local-first waterfall, classifies task types, handles task-specific overrides, and falls back across providers.
+title: Smart Routing
+description: How Olympus picks the best AI model for every task — routing locally first, falling back to cloud only when needed, and always protecting you from unexpected costs.
 ---
 
 <section class="hero" style="padding: 3rem 0 2rem;">
-  <div class="hero-badge">Module Reference · Provider Router</div>
-  <h1>Hermes — Provider Router</h1>
+  <div class="hero-badge">Routing</div>
+  <h1>Smart AI Model Routing</h1>
   <p class="hero-sub">
-    Hermes is the capability-aware model router at the heart of Olympus. Every AI request
-    flows through Hermes, which selects the optimal provider based on task complexity,
-    capability requirements, and cost — routing locally first, falling back to cloud only
-    when necessary.
+    Every AI request in Olympus flows through an intelligent routing system.
+    It picks the best model based on what the task needs, how much it costs, and
+    how fast it responds — always preferring local models first.
   </p>
 </section>
 
 <section>
   <div class="section-inner">
-    <div class="section-label">Decision Tree</div>
-    <h2>How Hermes picks a provider</h2>
+    <div class="section-label">How It Works</div>
+    <h2>The routing decision tree</h2>
     <p>
-      <code>Hermes.Route(capability, prompt)</code> works through a prioritised decision tree.
-      Every node is a real conditional in the source — this is not aspirational documentation.
+      When you give Olympus a task, it doesn't just send it to the most powerful model.
+      Instead, it evaluates the task's complexity and routes it to the most appropriate
+      and cost-effective model available.
     </p>
 
 <div class="mermaid">
 flowchart TD
-    A([Route called]) --> B{offline_mode?}
-    B -->|yes| OL[return local model]
-    B -->|no| C{local_first AND\ncomplexity ≤ local_threshold?}
-    C -->|yes + local model available| OL
-    C -->|no| D{capability ==\nSummarization or Embeddings?}
-    D -->|yes + local model available| OL
-    D -->|no| E{task_routes configured\nAND prompt matches task type?}
-    E -->|yes| TR[try primary route\nthen fallback route]
-    TR -->|found| R([return provider])
+    A([Your request]) --> B{Offline mode?}
+    B -->|yes| OL[Use local model]
+    B -->|no| C{Simple enough\nfor local model?}
+    C -->|yes + available| OL
+    C -->|no| D{Summarization or\nembeddings task?}
+    D -->|yes + available| OL
+    D -->|no| E{Task-specific\nrouting configured?}
+    E -->|yes| TR[Try configured route\nthen fallback]
+    TR -->|found| R([Use selected model])
     TR -->|not found| F
-    E -->|no| F[iterate cloud_priority order]
-    F --> G{provider available\nAND has capability?}
+    E -->|no| F[Try cloud providers\nin priority order]
+    F --> G{Provider available\nwith needed capability?}
     G -->|yes| R
-    G -->|exhausted| H[any available provider\nwith capability]
+    G -->|exhausted| H[Try any available\nprovider]
     H -->|found| R
-    H -->|none| NIL([return nil — error shown])
+    H -->|none| NIL([Error — no providers available])
 
     style OL fill:#1a2e20,color:#A3BE8C,stroke:#A3BE8C
     style R  fill:#1a2535,color:#88C0D0,stroke:#88C0D0
@@ -52,61 +52,63 @@ flowchart TD
 
 <section>
   <div class="section-inner">
-    <div class="section-label">Complexity Scoring</div>
-    <h2>How local_threshold gates local model</h2>
+    <div class="section-label">Local First</div>
+    <h2>Why local models are preferred</h2>
     <p>
-      When <code>local_first: true</code> (the default), Hermes calls
-      <code>compression.ClassifyComplexity(prompt)</code> before attempting local model.
-      The scorer is a pure-Go heuristic — no model call, zero latency.
+      By default, Olympus sends everything to your local model first. Local models are:
     </p>
+    <div class="cards">
+      <div class="card">
+        <div class="tag tag-green">Free</div>
+        <h3>No token costs</h3>
+        <p>Local models run on your machine at zero cost. No API keys, no billing, no surprises.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-green">Fast</div>
+        <h3>Under 200ms</h3>
+        <p>No network round-trip. Responses come back almost instantly.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-green">Private</div>
+        <h3>Your data stays local</h3>
+        <p>Nothing leaves your machine unless you explicitly configure cloud providers.</p>
+      </div>
+    </div>
     <p>
-      Signals the scorer uses: token count estimate, presence of code fences, multi-step
-      instruction keywords (<em>explain, architect, design, compare, evaluate</em>), and length
-      relative to a complexity band. Returns a float in <code>[0.0, 1.0]</code>.
+      You control how aggressive the local bias is. By default, everything goes local when
+      a model is available. You can tune this so only simple tasks stay local while complex
+      ones go to cloud.
     </p>
-    <p>
-      <code>local_threshold</code> controls how aggressive the local bias is:
-    </p>
-    <table class="provider-table">
-      <thead>
-        <tr><th>Value</th><th>Behaviour</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><code>1.0</code> (default)</td><td>Everything goes to local model when available — cloud is pure fallback</td></tr>
-        <tr><td><code>0.7</code></td><td>Simple queries go local; high-complexity queries skip to cloud</td></tr>
-        <tr><td><code>0.0</code></td><td>Disable local-first — every request goes to cloud priority order</td></tr>
-      </tbody>
-    </table>
     <pre><code class="language-yaml"># ~/.olympus/config.yaml
 routing:
-  local_first: true
-  local_threshold: 1.0</code></pre>
+  local_first: true       # prefer local models (default)
+  local_threshold: 1.0    # 1.0 = everything local, 0.7 = only simple tasks</code></pre>
   </div>
 </section>
 
 <section>
   <div class="section-inner">
-    <div class="section-label">Task Classification</div>
-    <h2>Task-type routing overrides</h2>
+    <div class="section-label">Task-Aware</div>
+    <h2>Different tasks, different models</h2>
     <p>
-      When <code>task_routes</code> is configured, Hermes classifies each prompt into a task
-      type via keyword matching in <code>ClassifyTaskType()</code>, then looks up a named
-      primary/fallback route.
+      Olympus automatically classifies your request and can route different task types
+      to different models. Code generation goes to code-optimized models. Deep reasoning
+      goes to reasoning-optimized models.
     </p>
 
     <table class="provider-table">
       <thead>
-        <tr><th>Task type</th><th>Trigger keywords (sample)</th></tr>
+        <tr><th>Task type</th><th>Example requests</th></tr>
       </thead>
       <tbody>
-        <tr><td><code>code_generation</code></td><td>implement, refactor, fix bug, write a function, add endpoint</td></tr>
-        <tr><td><code>deep_reasoning</code></td><td>explain, analyze, architect, design a system, compare, evaluate</td></tr>
-        <tr><td><code>automation_pipeline</code></td><td>automate, pipeline, schedule, workflow, cron, bulk, batch process</td></tr>
-        <tr><td><code>batch_processing</code></td><td>batch processing, batch job, bulk run</td></tr>
-        <tr><td><code>large_reasoning</code></td><td>configured route key only — no keyword classifier yet</td></tr>
+        <tr><td><strong>Code generation</strong></td><td>"implement a cache layer", "fix this bug", "write a function that..."</td></tr>
+        <tr><td><strong>Deep reasoning</strong></td><td>"explain this architecture", "analyze the tradeoffs", "design a system for..."</td></tr>
+        <tr><td><strong>Automation</strong></td><td>"automate this pipeline", "set up a workflow", "schedule a batch job"</td></tr>
+        <tr><td><strong>Summarization</strong></td><td>Context compression, conversation summaries — always routed locally</td></tr>
       </tbody>
     </table>
 
+    <p>You can configure exactly which models handle which task types:</p>
     <pre><code class="language-yaml"># ~/.olympus/config.yaml
 routing:
   task_routes:
@@ -114,72 +116,75 @@ routing:
       primary: subscription_provider
       fallback: fallback_provider
     code_generation:
-      primary: ollama
+      primary: local_model
       fallback: subscription_provider</code></pre>
-
-    <p>
-      Provider aliases resolve to the same underlying provider. Which variant is active depends
-      on the configured authentication method (OAuth token vs API key).
-    </p>
   </div>
 </section>
 
 <section>
   <div class="section-inner">
-    <div class="section-label">Special Cases</div>
-    <h2>Summarization, Embeddings, and Fallback</h2>
+    <div class="section-label">Provider Waterfall</div>
+    <h2>The four-level fallback</h2>
     <p>
-      <strong>Summarization and Embeddings</strong> capabilities always route to local model regardless
-      of <code>local_first</code> or complexity settings. This is a hard-coded preference — these
-      operations should never incur cloud token cost.
+      When the preferred model isn't available, Olympus falls through a priority chain.
+      You're always warned before using a paid provider.
+    </p>
+
+    <table class="provider-table">
+      <thead>
+        <tr><th>Priority</th><th>Type</th><th>Cost</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Local model</strong></td>
+          <td>Runs on your machine</td>
+          <td><span class="badge badge-free">Free</span></td>
+        </tr>
+        <tr>
+          <td><strong>2. Subscription provider</strong></td>
+          <td>Your existing AI subscription</td>
+          <td><span class="badge badge-sub">Subscription</span></td>
+        </tr>
+        <tr>
+          <td><strong>3. Subscription fallback</strong></td>
+          <td>Secondary subscription</td>
+          <td><span class="badge badge-sub">Subscription</span></td>
+        </tr>
+        <tr>
+          <td><strong>4. Pay-per-token API</strong></td>
+          <td>Direct API access</td>
+          <td><span class="badge badge-paid">Per token ⚠</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      <strong>Summarization and embeddings</strong> always route to local models regardless of
+      other settings. These operations should never incur cloud costs.
     </p>
     <p>
-      <strong><code>Hermes.Fallback(current)</code></strong> returns the next provider after
-      <code>current</code> in the cloud priority order. Zeus uses this when a provider call fails
-      mid-stream, allowing automatic retry on the next tier without restarting the request.
+      <strong>Offline mode</strong> bypasses the entire waterfall and uses only local models.
+      Nothing leaves your machine.
     </p>
-    <p>
-      <strong>Offline mode</strong> (<code>routing.offline_mode: true</code>) bypasses the entire
-      decision tree and returns local model directly. All other routing logic is skipped.
-    </p>
+    <pre><code class="language-yaml"># Work completely offline
+routing:
+  offline_mode: true</code></pre>
   </div>
 </section>
 
 <section>
   <div class="section-inner">
-    <div class="section-label">Provider Interface</div>
-    <h2>What Hermes requires from providers</h2>
+    <div class="section-label">Add Your Own</div>
+    <h2>Plugin providers</h2>
     <p>
-      Every provider — built-in or plugin — must implement the <code>providers.Provider</code>
-      interface. Hermes calls four methods on every candidate before routing:
+      Any AI provider with a compatible API can be added as a plugin. Olympus treats
+      plugin providers the same as built-in ones — they participate in routing,
+      fallback, and cost tracking.
     </p>
-
-<div class="mermaid">
-classDiagram
-    class Provider {
-        &lt;&lt;interface&gt;&gt;
-        +Name() string
-        +IsAvailable() bool
-        +Capabilities() list
-        +MaxContext() int
-        +CostPerToken() float64
-        +Generate(ctx, req) Response
-    }
-
-    class Hermes {
-        +Route(cap, prompt) Provider
-        +Fallback(current) Provider
-        +Providers() list
-        +ProviderOrder() list
-        +IsPaidAPI(p) bool
-    }
-
-    Hermes --> Provider : selects
-</div>
-
-    <p>
-      <code>IsAvailable()</code> is checked at call time, not cached. A provider that becomes
-      unavailable mid-session (e.g. local model stops) is immediately bypassed to the next tier.
-    </p>
+    <pre><code class="language-bash"># Add a custom provider
+olympus providers add my-provider \
+  --key sk_... \
+  --model my-preferred-model \
+  --base-url https://api.example.com/v1</code></pre>
   </div>
 </section>
