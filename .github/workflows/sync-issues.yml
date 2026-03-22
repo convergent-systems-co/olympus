@@ -18,59 +18,66 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const [owner, repo] = process.env.INTERNAL_REPO.split('/');
+            const [intOwner, intRepo] = process.env.INTERNAL_REPO.split('/');
             const internal = github.getOctokit(process.env.INTERNAL_TOKEN);
             const issue = context.payload.issue;
-            const marker = `<!-- sync:${context.repo.repo}#${issue.number} -->`;
+            const marker = `<!-- sync:${context.repo.owner}/${context.repo.repo}#${issue.number} -->`;
 
-            // Find existing synced issue
+            // Skip comments from the sync bot to prevent loops
+            if (context.payload.comment) {
+              const body = context.payload.comment.body || '';
+              if (body.includes('<!-- sync-comment -->')) return;
+            }
+
+            // Find existing synced issue by marker
             const { data: existing } = await internal.rest.issues.listForRepo({
-              owner, repo, state: 'all', per_page: 100,
-              labels: 'area/infra'
+              owner: intOwner, repo: intRepo, state: 'all', per_page: 100
             });
             let target = existing.find(i => i.body && i.body.includes(marker));
 
             // Build label list — only sync labels that exist on internal repo
             const { data: internalLabels } = await internal.rest.issues.listLabelsForRepo({
-              owner, repo, per_page: 100
+              owner: intOwner, repo: intRepo, per_page: 100
             });
             const validLabels = new Set(internalLabels.map(l => l.name));
             const labels = issue.labels
               .map(l => l.name)
               .filter(n => validLabels.has(n));
 
+            // Always tag issues from the public site as customer-sourced
+            if (!labels.includes('source/customer')) {
+              labels.push('source/customer');
+            }
+
             const origin = `${context.repo.owner}/${context.repo.repo}#${issue.number}`;
             const body = `${marker}\n\n**Source:** ${origin}\n**Reporter:** @${issue.user.login}\n\n---\n\n${issue.body || ''}`;
 
             if (context.payload.action === 'opened' && !target) {
-              // Create new issue
               const { data: created } = await internal.rest.issues.create({
-                owner, repo,
+                owner: intOwner, repo: intRepo,
                 title: issue.title,
                 body,
                 labels
               });
               core.info(`Created internal issue #${created.number}`);
             } else if (target) {
-              // Update existing issue
-              const update = {
-                owner, repo,
+              await internal.rest.issues.update({
+                owner: intOwner, repo: intRepo,
                 issue_number: target.number,
                 title: issue.title,
                 body,
                 labels,
                 state: issue.state
-              };
-              await internal.rest.issues.update(update);
+              });
               core.info(`Updated internal issue #${target.number}`);
 
-              // Sync comments
+              // Sync new comments
               if (context.payload.action === 'created' && context.payload.comment) {
                 const comment = context.payload.comment;
                 await internal.rest.issues.createComment({
-                  owner, repo,
+                  owner: intOwner, repo: intRepo,
                   issue_number: target.number,
-                  body: `**@${comment.user.login}** commented:\n\n${comment.body}`
+                  body: `<!-- sync-comment -->\n**@${comment.user.login}** commented on [${origin}](https://github.com/${origin}):\n\n${comment.body}`
                 });
               }
             }
