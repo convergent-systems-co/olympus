@@ -19,8 +19,8 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const [intOwner, intRepo] = process.env.INTERNAL_REPO.split('/');
-            const { getOctokit } = require('@actions/github');
-            const internal = getOctokit(process.env.INTERNAL_TOKEN);
+            const Octokit = github.constructor;
+            const internal = new Octokit({ auth: process.env.INTERNAL_TOKEN });
             const issue = context.payload.issue;
             const marker = `<!-- sync:${context.repo.owner}/${context.repo.repo}#${issue.number} -->`;
 
