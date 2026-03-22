@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Design System
-description: Olympus visual design language — color palette, typography, icon concepts, and usage rules for the god-module theming system.
+description: Olympus visual design language — color palette, typography, icon concepts, and usage rules for the module theming system.
 ---
 
 # Olympus Design System

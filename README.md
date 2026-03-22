@@ -24,4 +24,4 @@ Olympus is a CLI-native AI orchestration layer that routes prompts through a loc
 
 ## License
 
-AGPL-3.0 © [Convergent Systems](https://github.com/convergent-systems-co)
+BSL-1.1 © [Convergent Systems](https://github.com/convergent-systems-co)
