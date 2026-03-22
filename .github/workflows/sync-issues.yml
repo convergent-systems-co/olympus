@@ -31,7 +31,7 @@ jobs:
             core.info(`Event: ${context.eventName}, action: ${context.payload.action}`);
 
             // Create a new Octokit with the internal token
-            const { Octokit } = require('@octokit/rest');
+            const Octokit = github.constructor;
             const internal = new Octokit({ auth: token });
 
             const issue = context.payload.issue;
@@ -48,14 +48,14 @@ jobs:
 
             // Find existing synced issue by marker
             core.info('Searching for existing synced issue...');
-            const { data: existing } = await internal.issues.listForRepo({
+            const { data: existing } = await internal.rest.issues.listForRepo({
               owner: intOwner, repo: intRepo, state: 'all', per_page: 100
             });
             core.info(`Found ${existing.length} issues to search through`);
             let target = existing.find(i => i.body && i.body.includes(marker));
 
             // Build label list — only sync labels that exist on internal repo
-            const { data: internalLabels } = await internal.issues.listLabelsForRepo({
+            const { data: internalLabels } = await internal.rest.issues.listLabelsForRepo({
               owner: intOwner, repo: intRepo, per_page: 100
             });
             const validLabels = new Set(internalLabels.map(l => l.name));
@@ -74,7 +74,7 @@ jobs:
             if (!target) {
               // Create new issue (on any event if not yet synced)
               core.info(`Creating new issue: "${issue.title}"`);
-              const { data: created } = await internal.issues.create({
+              const { data: created } = await internal.rest.issues.create({
                 owner: intOwner, repo: intRepo,
                 title: issue.title,
                 body,
@@ -84,7 +84,7 @@ jobs:
             } else {
               // Update existing issue
               core.info(`Updating internal issue #${target.number}`);
-              await internal.issues.update({
+              await internal.rest.issues.update({
                 owner: intOwner, repo: intRepo,
                 issue_number: target.number,
                 title: issue.title,
@@ -97,7 +97,7 @@ jobs:
               // Sync new comments
               if (context.payload.action === 'created' && context.payload.comment) {
                 const comment = context.payload.comment;
-                await internal.issues.createComment({
+                await internal.rest.issues.createComment({
                   owner: intOwner, repo: intRepo,
                   issue_number: target.number,
                   body: `<!-- sync-comment -->\n**@${comment.user.login}** commented on [${origin}](https://github.com/${origin}):\n\n${comment.body}`
