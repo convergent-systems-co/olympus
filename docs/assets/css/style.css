@@ -559,6 +559,58 @@ hr {
 
 .footer-sep { color: var(--text-dim); }
 
+/* ── Download cards ───────────────────────────────────────────────────── */
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.download-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-border);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.download-card:hover {
+  border-color: var(--blue-2);
+  background: var(--bg-hover);
+}
+
+.download-card-secondary {
+  border-style: dashed;
+}
+
+.download-icon {
+  font-size: 1.5rem;
+}
+
+.download-label {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.download-file {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  word-break: break-all;
+}
+
+.download-size {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
 /* ── Responsive ────────────────────────────────────────────────────────── */
 
 @media (max-width: 640px) {
