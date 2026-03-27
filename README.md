@@ -22,6 +22,15 @@ Olympus is a CLI-native AI orchestration layer that routes prompts through a loc
 - **Governance built-in** — automated code review, security review, threat modeling, and 20+ review panels
 - **Agentic loop** — 8-phase autonomous development pipeline with plan→dispatch→review→merge
 
+## Issue Intake
+
+The public issue tracker in this repo is the external intake surface for Olympus.
+
+- public reports and requests start here
+- intake issues route inward to `convergent-systems-co/olympus-central` for system triage
+- child repos receive linked execution issues only when internal ownership is clear
+- internal Codex or Claude implementation issues do not auto-publish back into this public repo
+
 ## License
 
 BSL-1.1 © [Convergent Systems](https://github.com/convergent-systems-co)

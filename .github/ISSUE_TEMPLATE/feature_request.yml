@@ -7,6 +7,8 @@ body:
       value: |
         We appreciate feature requests — they help us build what matters most. Please describe the problem you're trying to solve, not just the solution you'd like.
 
+        Public issues filed here are intake for the product. They route inward to internal coordination and repo execution workflows, but internal implementation details are not mirrored back to this public issue automatically.
+
   - type: textarea
     id: problem
     attributes:
@@ -56,5 +58,21 @@ body:
         - Critical — I can't adopt Olympus without this
         - High — would significantly improve my experience
         - Nice to have — would be a welcome addition
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: affected_surfaces
+    attributes:
+      label: Affected surfaces
+      description: Pick every surface that appears involved. This helps us route the request internally.
+      options:
+        - label: CLI
+        - label: API / auth / billing backend
+        - label: Web / site / dashboard
+        - label: IDE / desktop
+        - label: Infra / deployment / environment
+        - label: Documentation / product claims
+        - label: Not sure
     validations:
       required: true

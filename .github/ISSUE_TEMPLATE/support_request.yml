@@ -9,6 +9,8 @@ body:
 
         **Enterprise customers** — if you have an SLA, please email [hello@olympus.sh](mailto:hello@olympus.sh) for priority support.
 
+        Public issues filed here route inward for internal triage. Internal implementation discussions stay internal unless we intentionally summarize them back here.
+
   - type: input
     id: version
     attributes:
@@ -47,6 +49,22 @@ body:
     attributes:
       label: What have you already tried?
       description: Any steps, docs, or commands you've already attempted.
+
+  - type: checkboxes
+    id: affected_surfaces
+    attributes:
+      label: Affected surfaces
+      description: Pick every surface that appears involved. This helps us route the request internally.
+      options:
+        - label: CLI
+        - label: API / auth / billing backend
+        - label: Web / site / dashboard
+        - label: IDE / desktop
+        - label: Infra / deployment / environment
+        - label: Documentation / product claims
+        - label: Not sure
+    validations:
+      required: true
 
   - type: textarea
     id: logs

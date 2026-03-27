@@ -7,6 +7,8 @@ body:
       value: |
         Thank you for taking the time to report this. Please fill out the sections below so we can investigate quickly.
 
+        Public issues filed here are treated as product intake. They route inward to our internal coordination pipeline for triage and execution. Internal implementation details are not mirrored back out automatically.
+
   - type: input
     id: version
     attributes:
@@ -65,6 +67,22 @@ body:
         - Blocks my work entirely
         - Significant — I have a workaround but it's painful
         - Minor — cosmetic or edge case
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: affected_surfaces
+    attributes:
+      label: Affected surfaces
+      description: Pick every surface that appears involved. This helps us route the report internally.
+      options:
+        - label: CLI
+        - label: API / auth / billing backend
+        - label: Web / site / dashboard
+        - label: IDE / desktop
+        - label: Infra / deployment / environment
+        - label: Documentation / product claims
+        - label: Not sure
     validations:
       required: true
 

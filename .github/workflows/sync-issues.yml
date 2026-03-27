@@ -1,4 +1,4 @@
-name: Sync Issues
+name: Public Intake To Central
 
 on:
   issues:
@@ -6,102 +6,19 @@ on:
   issue_comment:
     types: [created]
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Sync to internal tracker
-        uses: actions/github-script@v7
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Sync public issue intake to olympus-central
         env:
-          INTERNAL_TOKEN: ${{ secrets.INTERNAL_REPO_TOKEN }}
-          INTERNAL_REPO: ${{ secrets.PRODUCT_REPO }}
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const token = process.env.INTERNAL_TOKEN;
-            const repoSlug = process.env.INTERNAL_REPO;
-
-            if (!token || !repoSlug) {
-              core.setFailed('Missing INTERNAL_REPO_TOKEN or PRODUCT_REPO secret');
-              return;
-            }
-
-            const [intOwner, intRepo] = repoSlug.split('/');
-            core.info(`Syncing to ${intOwner}/${intRepo}`);
-            core.info(`Event: ${context.eventName}, action: ${context.payload.action}`);
-
-            // Create a new Octokit with the internal token
-            const Octokit = github.constructor;
-            const internal = new Octokit({ auth: token });
-
-            const issue = context.payload.issue;
-            const marker = `<!-- sync:${context.repo.owner}/${context.repo.repo}#${issue.number} -->`;
-
-            // Skip comments from the sync bot to prevent loops
-            if (context.payload.comment) {
-              const body = context.payload.comment.body || '';
-              if (body.includes('<!-- sync-comment -->')) {
-                core.info('Skipping sync-comment to prevent loop');
-                return;
-              }
-            }
-
-            // Find existing synced issue by marker
-            core.info('Searching for existing synced issue...');
-            const { data: existing } = await internal.rest.issues.listForRepo({
-              owner: intOwner, repo: intRepo, state: 'all', per_page: 100
-            });
-            core.info(`Found ${existing.length} issues to search through`);
-            let target = existing.find(i => i.body && i.body.includes(marker));
-
-            // Build label list — only sync labels that exist on internal repo
-            const { data: internalLabels } = await internal.rest.issues.listLabelsForRepo({
-              owner: intOwner, repo: intRepo, per_page: 100
-            });
-            const validLabels = new Set(internalLabels.map(l => l.name));
-            const labels = issue.labels
-              .map(l => l.name)
-              .filter(n => validLabels.has(n));
-
-            // Always tag issues from the public site as customer-sourced
-            if (!labels.includes('source/customer')) {
-              labels.push('source/customer');
-            }
-
-            const origin = `${context.repo.owner}/${context.repo.repo}#${issue.number}`;
-            const body = `${marker}\n\n**Source:** ${origin}\n**Reporter:** @${issue.user.login}\n\n---\n\n${issue.body || ''}`;
-
-            if (!target) {
-              // Create new issue (on any event if not yet synced)
-              core.info(`Creating new issue: "${issue.title}"`);
-              const { data: created } = await internal.rest.issues.create({
-                owner: intOwner, repo: intRepo,
-                title: issue.title,
-                body,
-                labels
-              });
-              core.info(`Created internal issue #${created.number}`);
-            } else {
-              // Update existing issue
-              core.info(`Updating internal issue #${target.number}`);
-              await internal.rest.issues.update({
-                owner: intOwner, repo: intRepo,
-                issue_number: target.number,
-                title: issue.title,
-                body,
-                labels,
-                state: issue.state
-              });
-              core.info(`Updated internal issue #${target.number}`);
-
-              // Sync new comments
-              if (context.payload.action === 'created' && context.payload.comment) {
-                const comment = context.payload.comment;
-                await internal.rest.issues.createComment({
-                  owner: intOwner, repo: intRepo,
-                  issue_number: target.number,
-                  body: `<!-- sync-comment -->\n**@${comment.user.login}** commented on [${origin}](https://github.com/${origin}):\n\n${comment.body}`
-                });
-                core.info('Synced comment');
-              }
-            }
+          ROUTING_TOKEN: ${{ secrets.ROUTING_TOKEN }}
+          CENTRAL_REPO: convergent-systems-co/olympus-central
+        run: node .github/scripts/sync-public-issue-to-central.mjs
