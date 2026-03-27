@@ -1,0 +1,103 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
+*~
+.Spotlight-V100
+.Trashes
+
+# VSCode
+.vscode/
+*.code-workspace
+# IDEs
+.idea/
+*.iml
+*.sublime-workspace
+*.sublime-project
+# OS
+Thumbs.db
+desktop.ini
+# Dependencies (common)
+node_modules/
+__pycache__/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+# Environment files
+.env
+.env.local
+.env.*.local
+# Logs
+*.log
+logs/
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+### START: Go
+# If you prefer the allow list template instead of the deny list, see community template:
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+#
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Code coverage profiles and other test artifacts
+*.out
+coverage.*
+*.coverprofile
+profile.cov
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go workspace file
+go.work
+go.work.sum
+
+# env file
+.env
+
+# Editor/IDE
+# .idea/
+# .vscode/
+### END: Go
+
+### START: Global/macOS
+# General
+.DS_Store
+__MACOSX/
+.AppleDouble
+.LSOverride
+Icon[]
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+### END: Global/macOS
