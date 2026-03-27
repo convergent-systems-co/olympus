@@ -10,6 +10,10 @@ permissions:
   contents: read
   issues: write
 
+concurrency:
+  group: public-intake-issue-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
 jobs:
   sync:
     runs-on: ubuntu-latest
